@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router";
+import { useEffect } from "react";
 import { Root } from "./components/Root";
 import { LaunchGate } from "./components/LaunchGate";
-import { ComingSoon } from "./components/ComingSoon";
-import { Home } from "./components/Home";
 import { SignUp } from "./components/SignUp";
 import { SignIn } from "./components/SignIn";
 import { CompetitionsList } from "./components/CompetitionsList";
@@ -25,6 +24,20 @@ import { Privacy } from "./components/Privacy";
 import { UnsubscribeEmail } from "./components/UnsubscribeEmail";
 import { ResetPassword } from "./components/ResetPassword";
 
+function PurcarRedirect() {
+  useEffect(() => {
+    window.location.replace("https://purcar.me");
+  }, []);
+
+  return (
+    <main className="grid min-h-screen place-items-center bg-background text-foreground">
+      <a className="rounded-md border px-4 py-2" href="https://purcar.me">
+        Redirecting to PURCAR
+      </a>
+    </main>
+  );
+}
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +46,7 @@ export const router = createBrowserRouter([
       {
         Component: LaunchGate,
         children: [
-          { index: true, Component: ComingSoon },
+          { index: true, Component: PurcarRedirect },
           { path: "news", Component: Blog },
           { path: "news/:postId", Component: BlogPost },
           { path: "news/admin", Component: BlogAdmin },
